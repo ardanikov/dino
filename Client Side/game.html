@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Game Dino Run</title>
+  </head>
+  <body onload="setHighScore()">
+    <h2>Dino Run</h2>
+
+    <div id="board" style="background-position: 0px">
+      <div id="area">
+        <div class="over"></div>
+        <h3 class="score">Score : <span id="score">0</span></h3>
+        <h3 class="highest_score">
+          highest score :
+          <span id="highest_scoree"></span>
+        </h3>
+        <div id="dino"></div>
+        <div id="kalah">
+          <p>Anda kalah yhaaha hayukk</p>
+          <p>Score anda : <span id="highscore">0</span></p>
+          <a href="game.html" style="color: wheat; text-decoration: none"
+            >Mulai lagi</a
+          >
+        </div>
+        <div id="box" style="margin-left: 600px"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var isMoving = true;
+      function setHighScore() {
+        document.getElementById("highest_scoree").innerHTML =
+          localStorage.getItem("highest_score");
+      }
+      function setBackgroundMoving() {
+        if (isMoving == true) {
+          setTimeout(function () {
+            // agar bgnya berjalan
+            var bg = document.getElementById("board");
+            bg.style.backgroundPosition =
+              parseInt(bg.style.backgroundPosition.replace("px", "")) -
+              1 +
+              "px";
+            // penambahan score
+            document.getElementById("score").innerHTML =
+              parseInt(document.getElementById("score").innerHTML) + 1;
+
+            // panggil fungsi terus menerus (recursive)
+            setBackgroundMoving();
+          }, 5);
+        }
+      }
+      // panggil fungsi
+      setBackgroundMoving();
+
+      function setBoxMoving() {
+        var box = document.getElementById("box"),
+          dino = document.getElementById("dino"),
+          kalah = document.getElementById("kalah");
+        setTimeout(function () {
+          box.style.marginLeft =
+            parseInt(box.style.marginLeft.replace("px", "")) - 1 + "px";
+
+          if (parseInt(box.style.marginLeft.replace("px", "")) < -100) {
+            box.style.marginLeft = "600px";
+          }
+
+          if (
+            dino.offsetTop + 50 >= box.offsetTop &&
+            dino.offsetLeft + 50 >= box.offsetLeft &&
+            dino.offsetTop + 50 <= box.offsetTop + 50 &&
+            dino.offsetLeft <= box.offsetLeft + 50
+          ) {
+            // alert(
+            //   "Game Over, Score anda : " +
+            //     document.getElementById("score").innerHTML
+            // );
+            kalah.style.display = "block";
+            document.getElementById("highscore").innerHTML =
+              parseInt(document.getElementById("score").innerHTML) + 1;
+            dino.setAttribute("class", "freeze");
+            if (
+              parseInt(document.getElementById("score").innerHTML) + 1 >
+              localStorage.getItem("highest_score")
+            ) {
+              localStorage.setItem(
+                "highest_score",
+                parseInt(document.getElementById("score").innerHTML) + 1
+              );
+              document.getElementById("highest_scoree").innerHTML =
+                localStorage.getItem("highest_score");
+            }
+
+            isMoving = false;
+          } else {
+            // panggil fungsi terus menerus (recursive)
+            setBoxMoving();
+          }
+        }, 5);
+      }
+      setBoxMoving();
+
+      window.addEventListener("keyup", function (e) {
+        // untuk mendeteksi spasi
+        if (e.keyCode == 32 && isMoving != false) {
+          // dino loncat
+          document.getElementById("dino").style.marginTop = "25px";
+          // dino freeze
+          document.getElementById("dino").setAttribute("class", "freeze");
+          setTimeout(function () {
+            document.getElementById("dino").style.marginTop = "170px";
+            document.getElementById("dino").setAttribute("class", "");
+          }, 500);
+        }
+      });
+    </script>
+  </body>
+</html>

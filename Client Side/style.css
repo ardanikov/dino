@@ -1,0 +1,104 @@
+h2,
+h3 {
+  text-align: center;
+}
+.highest_score {
+  margin-left: 10px;
+  color: white;
+  position: absolute;
+  margin-top: 50px;
+}
+#kalah {
+  display: none;
+  margin-top: 134px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-family: monospace;
+  position: absolute;
+  margin-left: 150px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+}
+#board {
+  width: 600px;
+  height: 300px;
+  background: url("images/bg.jpg");
+  background-size: 100%;
+  margin: 20px auto;
+}
+
+#area {
+  width: 600px;
+  height: 300px;
+  position: absolute;
+  overflow: hidden;
+}
+
+@keyframes lari {
+  0% {
+    background: url("images/run1.png");
+    background-size: 100% 100%;
+  }
+  15% {
+    background: url("images/run2.png");
+    background-size: 100% 100%;
+  }
+  30% {
+    background: url("images/run3.png");
+    background-size: 100% 100%;
+  }
+  45% {
+    background: url("images/run4.png");
+    background-size: 100% 100%;
+  }
+  60% {
+    background: url("images/run5.png");
+    background-size: 100% 100%;
+  }
+  75% {
+    background: url("images/run6.png");
+    background-size: 100% 100%;
+  }
+  90% {
+    background: url("images/run7.png");
+    background-size: 100% 100%;
+  }
+  100% {
+    background: url("images/run8.png");
+    background-size: 100% 100%;
+  }
+}
+
+#dino {
+  width: 100px;
+  height: 100px;
+  background: url("images/run1.png");
+  background-size: 100% 100%;
+  position: absolute;
+  margin-top: 170px;
+  margin-left: 50px;
+  animation: lari 0.7s infinite;
+  transition: 1s;
+}
+
+#dino.freeze {
+  animation: none;
+  background: url("images/run8.png");
+  background-size: 100% 100%;
+}
+
+#box {
+  width: 40px;
+  height: 40px;
+  margin-top: 220px;
+  background: url("images/redbox.png");
+  background-size: 100% 100%;
+  margin-left: 600px;
+}
+
+.score {
+  color: white;
+  position: absolute;
+  margin-left: 20px;
+}

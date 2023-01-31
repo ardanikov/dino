@@ -1,0 +1,54 @@
+#area {
+    background: url('images/bgblur.jpeg');
+    width: 600px;
+    height: 300px;
+    margin: 20px auto;
+    background-size: 100%;
+}
+
+#dino {
+    background: url('images/run1.png');
+    width: 200px;
+    height: 200px;
+    background-size: 100%;
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 40px;
+}
+
+#box {
+    background: url('images/redbox.png');
+    width: 60px;
+    height: 60px;
+    background-size: 100%;
+    margin-top: 230px;
+    margin-left: 210px;
+    position: absolute;
+}
+
+.start {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 80px;
+    margin-left: 350px;
+    background: url('images/circle1.png');
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    background-size: 100%;
+}
+
+.play {
+    background: url('images/play.png');
+    width: 85px;
+    height: 85px;
+    background-size: 100%;
+}
+
+.play:hover {
+    width: 90px;
+    height: 90px;
+    opacity: 80%;
+}
+
